@@ -54,8 +54,8 @@ export const Home = () => {
       >
         <div className="absolute inset-0 bg-black bg-opacity-60">
           <div className="container mx-auto h-full flex flex-col justify-center px-4">
-            <h1 className="text-5xl font-bold mb-4">Welcome to Informatica</h1>
-            <p className="text-xl mb-6">Discover the latest in computer science and technology</p>
+            <h1 className="text-5xl font-bold mb-4">Welcome to Informatica!</h1>
+            <p className="text-xl mb-6">Discover the latest in Information science and technology.</p>
             <button className="bg-red-600 text-white px-8 py-2 rounded hover:bg-red-700 w-fit">
               Read More
             </button>
