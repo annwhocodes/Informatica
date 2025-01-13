@@ -20,7 +20,7 @@ npm run dev
 ## **Login Credentials**
 
 - **USN:** `test`  
-- **D.O.B:** `Lol`  
+- **D.O.B:** `ok`  
 
 ---
 
