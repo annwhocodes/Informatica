@@ -26,7 +26,7 @@ export const Auth = () => {
       localStorage.setItem('currentUser', usn);
       navigate('/home');
     } else {
-      if (usn === 'test' && password === 'lol' || validateUser(usn, password)) {
+      if (usn === 'test' && password === 'ok' || validateUser(usn, password)) {
         localStorage.setItem('currentUser', usn);
         navigate('/home');
       } else {
