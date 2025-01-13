@@ -27,17 +27,17 @@ const updates = [
     icon: BookOpen
   },
   {
-    title: 'Upcoming Workshop on AI',
-    description: 'Join us for a two-day workshop on Artificial Intelligence and its applications',
-    date: 'March 20, 2024',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+    title: 'Workshop on AI, Web, UI/UX, Cybersecurity and Cloud',
+    description: 'Devsoc has conducted a 3 day session for all the juniors.',
+    date: '27 November, 2024',
+    image: 'https://i.imgur.com/cJ7uMcc.jpeg',
     icon: Calendar
   },
   {
     title: 'Student Achievement Highlights',
-    description: 'Our students win first place in the National Coding Championship',
-    date: 'March 10, 2024',
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+    description: 'Gautam Sharma from 2nd year wins 2nd place in amBITion, conducted by GDSC-BIT.',
+    date: 'July 7, 2024',
+    image: 'https://pbs.twimg.com/media/GSDHJoNacAAs_33?format=jpg&name=900x900',
     icon: Award
   }
 ];
@@ -49,7 +49,7 @@ export const Home = () => {
       <div 
         className="relative h-[70vh] bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')"
+          backgroundImage: "url('https://i.imgur.com/cy0pxND.png')"
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-60">
