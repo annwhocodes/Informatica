@@ -26,7 +26,7 @@ export const Auth = () => {
       localStorage.setItem('currentUser', usn);
       navigate('/home');
     } else {
-      if (usn === 'test' && password === 'ok' || validateUser(usn, password)) {
+      if (usn === 'test' && password === 'lol' || validateUser(usn, password)) {
         localStorage.setItem('currentUser', usn);
         navigate('/home');
       } else {
@@ -36,8 +36,23 @@ export const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-zinc-900 rounded-lg p-8">
+    <div className="relative min-h-screen flex items-center justify-center px-4">
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="https://i.imgur.com/KAWcpsK.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+      {/* Login Box */}
+      <div className="relative max-w-md w-full bg-zinc-900 rounded-lg p-8">
         <h2 className="text-3xl font-bold text-white mb-6">
           {isSignUp ? 'Sign Up' : 'Sign In'} to Informatica
         </h2>
