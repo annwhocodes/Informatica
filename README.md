@@ -33,3 +33,7 @@ npm run dev
 - **Purpose:**  
   Allow users to find others by specific tags, promoting skill-based collaboration and networking.
   Add social media links for each profile to make connectivity easier and encourage interactions.
+
+## Reference
+
+https://www.canva.com/design/DAGWz1EvUWU/IX5dbUDnKWYck4wGbXIgaA/edit
