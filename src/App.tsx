@@ -1,22 +1,22 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Auth } from './pages/Auth';
-import { Home } from './pages/Home';
-import { Navbar } from './components/Navbar';
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuth } from "./context/AuthContext"; 
+import AuthPage from "./pages/AuthPage";
+import { Home } from "./pages/Home";
+import { Navbar } from "./components/Navbar";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const isAuthenticated = localStorage.getItem('currentUser'); // Ensure this key exists during login
-  return isAuthenticated ? children : <Navigate to="/" />;
+  const { user } = useAuth(); 
+  return user ? children : <Navigate to="/" />;
 };
 
 function App() {
   return (
-    <BrowserRouter>
       <div className="min-h-screen bg-black">
         <Navbar />
         <Routes>
           {/* Public route */}
-          <Route path="/" element={<Auth />} />
+          <Route path="/" element={<AuthPage />} />
 
           {/* Protected routes */}
           <Route
@@ -133,7 +133,6 @@ function App() {
           />
         </Routes>
       </div>
-    </BrowserRouter>
   );
 }
 
