@@ -1,43 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { saveUser, validateUser } from '../auth';
+// src/pages/AuthPage.tsx
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
-export const Auth = () => {
+const AuthPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const [usn, setUsn] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { user, signup, login } = useAuth();
 
   useEffect(() => {
-    // Check if user is already logged in
-    const currentUser = localStorage.getItem('currentUser');
-    if (currentUser) {
-      navigate('/home');
+    if (user) {
+      navigate("/home");
     }
-  }, [navigate]);
+  }, [user, navigate]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
-    if (isSignUp) {
-      saveUser({ usn, password });
-      localStorage.setItem('currentUser', usn);
-      navigate('/home');
-    } else {
-      if (usn === 'test' && password === 'lol' || validateUser(usn, password)) {
-        localStorage.setItem('currentUser', usn);
-        navigate('/home');
+    try {
+      if (isSignUp) {
+        await signup(email, password);
       } else {
-        setError('Invalid credentials');
+        await login(email, password);
       }
+      navigate("/home");
+    } catch (error: any) {
+      setError(error.message);
     }
   };
 
   return (
     <div className="relative min-h-screen flex items-center justify-center px-4">
-      {/* Background Video */}
       <video
         autoPlay
         loop
@@ -48,21 +45,19 @@ export const Auth = () => {
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
-      {/* Login Box */}
       <div className="relative max-w-md w-full bg-zinc-900 rounded-lg p-8">
         <h2 className="text-3xl font-bold text-white mb-6">
-          {isSignUp ? 'Sign Up' : 'Sign In'} to Informatica
+          {isSignUp ? "Sign Up" : "Sign In"} to Informatica
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <input
-              type="text"
-              placeholder="USN"
-              value={usn}
-              onChange={(e) => setUsn(e.target.value)}
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full p-3 bg-zinc-800 text-white rounded"
               required
             />
@@ -70,7 +65,7 @@ export const Auth = () => {
           <div>
             <input
               type="password"
-              placeholder="Date of birth"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full p-3 bg-zinc-800 text-white rounded"
@@ -82,19 +77,21 @@ export const Auth = () => {
             type="submit"
             className="w-full bg-red-600 text-white p-3 rounded hover:bg-red-700"
           >
-            {isSignUp ? 'Sign Up' : 'Sign In'}
+            {isSignUp ? "Sign Up" : "Sign In"}
           </button>
         </form>
         <p className="text-white mt-4 text-center">
-          {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
+          {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
           <button
             onClick={() => setIsSignUp(!isSignUp)}
             className="text-red-600 hover:underline"
           >
-            {isSignUp ? 'Sign In' : 'Sign Up'}
+            {isSignUp ? "Sign In" : "Sign Up"}
           </button>
         </p>
       </div>
     </div>
   );
 };
+
+export default AuthPage; // Ensure this is a default export
