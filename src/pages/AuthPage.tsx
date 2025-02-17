@@ -65,7 +65,7 @@ function AuthPage() {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password is 'ise123' for all"
+              placeholder="Password for all pc's of ISE dept"
               className="mt-1 block w-full rounded-md bg-zinc-800 border-gray-600 text-white px-4 py-2"
               required
             />
