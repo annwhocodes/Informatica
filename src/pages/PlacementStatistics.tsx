@@ -23,7 +23,6 @@ function PlacementStatistics() {
 
   return (
     <div className="page-container">
-      <Navbar />
       <div className="content-wrapper">
         <h1 className="page-title">Placement Statistics</h1>
         <Row title="Placement Highlights" items={statistics} />

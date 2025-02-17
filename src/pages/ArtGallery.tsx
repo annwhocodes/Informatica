@@ -23,7 +23,6 @@ function ArtGallery() {
 
   return (
     <div className="page-container">
-      <Navbar />
       <div className="content-wrapper">
         <h1 className="page-title">Art Gallery</h1>
         <Row title="Featured Artworks" items={artworks} />

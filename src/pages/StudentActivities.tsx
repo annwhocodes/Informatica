@@ -23,7 +23,6 @@ function StudentActivities() {
 
   return (
     <div className="page-container">
-      <Navbar />
       <div className="content-wrapper">
         <h1 className="page-title">Student Activities</h1>
         <Row title="Recent Activities" items={activities} />
