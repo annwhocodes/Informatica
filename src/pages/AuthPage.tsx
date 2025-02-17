@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/pages/AuthPage.tsx
 // src/pages/AuthPage.tsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +9,15 @@ const AuthPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+=======
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+export const Auth = () => {
+  const [usn, setUsn] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+>>>>>>> f357e73 (removed auth):src/pages/Auth.tsx
   const navigate = useNavigate();
   const { user, signup, login } = useAuth();
 
@@ -21,6 +31,7 @@ const AuthPage = () => {
     e.preventDefault();
     setError("");
 
+<<<<<<< HEAD:src/pages/AuthPage.tsx
     try {
       if (isSignUp) {
         await signup(email, password);
@@ -30,6 +41,14 @@ const AuthPage = () => {
       navigate("/home");
     } catch (error: any) {
       setError(error.message);
+=======
+    // Only accept "ise123" as the password
+    if (password === 'ise123') {
+      localStorage.setItem('currentUser', usn);
+      navigate('/home');
+    } else {
+      setError('Invalid credentials');
+>>>>>>> f357e73 (removed auth):src/pages/Auth.tsx
     }
   };
 
@@ -48,9 +67,13 @@ const AuthPage = () => {
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
       <div className="relative max-w-md w-full bg-zinc-900 rounded-lg p-8">
+<<<<<<< HEAD:src/pages/AuthPage.tsx
         <h2 className="text-3xl font-bold text-white mb-6">
           {isSignUp ? "Sign Up" : "Sign In"} to Informatica
         </h2>
+=======
+        <h2 className="text-3xl font-bold text-white mb-6">Sign In to Informatica</h2>
+>>>>>>> f357e73 (removed auth):src/pages/Auth.tsx
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <input
@@ -77,6 +100,7 @@ const AuthPage = () => {
             type="submit"
             className="w-full bg-red-600 text-white p-3 rounded hover:bg-red-700"
           >
+<<<<<<< HEAD:src/pages/AuthPage.tsx
             {isSignUp ? "Sign Up" : "Sign In"}
           </button>
         </form>
@@ -89,6 +113,11 @@ const AuthPage = () => {
             {isSignUp ? "Sign In" : "Sign Up"}
           </button>
         </p>
+=======
+            Sign In
+          </button>
+        </form>
+>>>>>>> f357e73 (removed auth):src/pages/Auth.tsx
       </div>
     </div>
   );

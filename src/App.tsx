@@ -1,9 +1,29 @@
+<<<<<<< HEAD
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext"; 
 import AuthPage from "./pages/AuthPage";
 import { Home } from "./pages/Home";
 import { Navbar } from "./components/Navbar";
+=======
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Auth } from './pages/Auth';
+import { Home } from './pages/Home';
+import { Navbar } from './components/Navbar';
+import VissionMission from './pages/VIssionMission';
+import FacultyAchievement from './pages/FacultyAchievement';
+import FacultyPublication from './pages/FacultyPublication';
+import StudentInduction from './pages/StudentInduction';
+import IndustrialVisit from './pages/IndustrialVisit';
+import FundedProjects from './pages/FundedProjects';
+import WorkshopsandTrips from './pages/WorkshopsandTrips';
+import ArtGallery from './pages/ArtGallery';
+import StudentActivities from '/pages/StudentActivities';
+import PlacementStatistics from '/pages/PlacementStatistics';
+import AboutUs from './pages/AboutUs';
+
+>>>>>>> f357e73 (removed auth)
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user } = useAuth(); 
@@ -31,7 +51,7 @@ function App() {
             path="/VissionMission"
             element={
               <ProtectedRoute>
-                <div className="text-white p-8">Vission Mission</div>
+                <VissionMission />
               </ProtectedRoute>
             }
           />
@@ -39,7 +59,7 @@ function App() {
             path="/faculty-achievement"
             element={
               <ProtectedRoute>
-                <div className="text-white p-8">Faculty Achievement Page</div>
+                <FacultyAchievement />
               </ProtectedRoute>
             }
           />
@@ -47,7 +67,7 @@ function App() {
             path="/faculty-publication"
             element={
               <ProtectedRoute>
-                <div className="text-white p-8">Faculty Publication Page</div>
+                <FacultyPublication />
               </ProtectedRoute>
             }
           />
@@ -55,7 +75,7 @@ function App() {
             path="/student-induction"
             element={
               <ProtectedRoute>
-                <div className="text-white p-8">Student Induction Page</div>
+                <StudentInduction />
               </ProtectedRoute>
             }
           />
@@ -63,7 +83,7 @@ function App() {
             path="/industrial-visit"
             element={
               <ProtectedRoute>
-                <div className="text-white p-8">Industrial Visit Page</div>
+                <IndustrialVisit />
               </ProtectedRoute>
             }
           />
@@ -71,7 +91,7 @@ function App() {
             path="/funded-projects"
             element={
               <ProtectedRoute>
-                <div className="text-white p-8">Funded Projects Page</div>
+                <FundedProjects />
               </ProtectedRoute>
             }
           />
@@ -79,7 +99,7 @@ function App() {
             path="/workshops"
             element={
               <ProtectedRoute>
-                <div className="text-white p-8">Workshops and Trips Page</div>
+                <WorkshopsandTrips  />
               </ProtectedRoute>
             }
           />
@@ -87,7 +107,7 @@ function App() {
             path="/art-gallery"
             element={
               <ProtectedRoute>
-                <div className="text-white p-8">Art Gallery Page</div>
+                <ArtGallery />
               </ProtectedRoute>
             }
           />
@@ -95,7 +115,7 @@ function App() {
             path="/student-activities"
             element={
               <ProtectedRoute>
-                <div className="text-white p-8">Student Activities Page</div>
+                <StudentActivities />
               </ProtectedRoute>
             }
           />
@@ -103,31 +123,17 @@ function App() {
             path="/placement-stats"
             element={
               <ProtectedRoute>
-                <div className="text-white p-8">Placement Statistics Page</div>
+                <PlacementStatistics />
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/lost-found"
-            element={
-              <ProtectedRoute>
-                <div className="text-white p-8">Lost and Found Page</div>
-              </ProtectedRoute>
-            }
-          />
+          
+
           <Route
             path="/about"
             element={
               <ProtectedRoute>
-                <div className="text-white p-8">About Us Page</div>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <div className="text-white p-8">Profile Page</div>
+                <AboutUs />
               </ProtectedRoute>
             }
           />
