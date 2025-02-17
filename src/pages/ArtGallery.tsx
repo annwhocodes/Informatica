@@ -1,15 +1,35 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
+import Row from '../components/Row';
 
-const PlaceholderPage = () => {
+function ArtGallery() {
+  const artworks = [
+    {
+      title: "Digital Art Exhibition",
+      description: "Student artwork showcase",
+      image: "https://source.unsplash.com/800x400/?digital-art"
+    },
+    {
+      title: "Tech Installation",
+      description: "Interactive technology art display",
+      image: "https://source.unsplash.com/800x400/?installation"
+    },
+    {
+      title: "Creative Computing",
+      description: "Computational art projects",
+      image: "https://source.unsplash.com/800x400/?creative-tech"
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Coming Soon</h1>
-        <p className="text-lg text-gray-600 mb-6">This page is under construction. Stay tuned!</p>
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-red-600 border-opacity-50"></div>
+    <div className="page-container">
+      <Navbar />
+      <div className="content-wrapper">
+        <h1 className="page-title">Art Gallery</h1>
+        <Row title="Featured Artworks" items={artworks} />
       </div>
     </div>
   );
-};
+}
 
-export default PlaceholderPage;
+export default ArtGallery;

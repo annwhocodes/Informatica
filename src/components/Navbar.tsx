@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogOut, User as UserIcon, Search } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const isAuthenticated = localStorage.getItem('currentUser');
+  const { user, logout } = useAuth();
 
   const handleSignOut = () => {
-    localStorage.removeItem('currentUser');
+    logout();
     navigate('/');
   };
 
@@ -20,18 +21,13 @@ export const Navbar = () => {
             alt="Logo"
             className="w-8 h-8"
           />
-          <span
-            className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-400 text-2xl font-bold"
-          >
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-400 text-2xl font-bold">
             Informatica
           </span>
         </Link>
         <div className="flex items-center gap-6">
-          {isAuthenticated && (
+          {user && (
             <>
-              <Link to="/lost-found" className="hover:text-red-600 flex items-center gap-1">
-                <Search className="w-5 h-5" />
-              </Link>
               <Link to="/about" className="hover:text-red-600 flex items-center">
                 <img
                   src="https://i.imgur.com/xVQN76e.png"
@@ -39,13 +35,7 @@ export const Navbar = () => {
                   className="w-6 h-6"
                 />
               </Link>
-              <Link to="/profile" className="hover:text-red-600">
-                <UserIcon className="w-6 h-6" />
-              </Link>
-              <button
-                onClick={handleSignOut}
-                className="hover:text-red-600"
-              >
+              <button onClick={handleSignOut} className="hover:text-red-600">
                 <LogOut className="w-6 h-6" />
               </button>
             </>
@@ -55,3 +45,5 @@ export const Navbar = () => {
     </nav>
   );
 };
+
+export default Navbar

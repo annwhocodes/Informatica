@@ -23,4 +23,3 @@ export const validateUser = async (email: string, password: string): Promise<Use
     throw new Error(error.message);
   }
 };
-

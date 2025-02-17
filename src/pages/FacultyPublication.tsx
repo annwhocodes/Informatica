@@ -1,15 +1,35 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
+import Row from '../components/Row';
 
-const PlaceholderPage = () => {
+function FacultyPublication() {
+  const publications = [
+    {
+      title: "Machine Learning in Healthcare",
+      description: "Published in IEEE Transactions on Medical Imaging",
+      image: "https://source.unsplash.com/800x400/?medical"
+    },
+    {
+      title: "Blockchain Security",
+      description: "Journal of Cryptography and Network Security",
+      image: "https://source.unsplash.com/800x400/?security"
+    },
+    {
+      title: "AI Ethics",
+      description: "International Journal of Computer Science",
+      image: "https://source.unsplash.com/800x400/?ethics"
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Coming Soon</h1>
-        <p className="text-lg text-gray-600 mb-6">This page is under construction. Stay tuned!</p>
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-red-600 border-opacity-50"></div>
+    <div className="page-container">
+      <Navbar />
+      <div className="content-wrapper">
+        <h1 className="page-title">Faculty Publications</h1>
+        <Row title="Recent Publications" items={publications} />
       </div>
     </div>
   );
-};
+}
 
-export default PlaceholderPage;
+export default FacultyPublication;

@@ -1,71 +1,67 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { auth } from "../firebase";
-import { onAuthStateChanged, signOut, User } from "firebase/auth";
-import { saveUser, validateUser } from "../auth";
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
-// Define types for context values
+interface User {
+  email: string;
+}
+
 interface AuthContextType {
-  user: User | null;  // Firebase User or null if not logged in
-  signup: (email: string, password: string) => void;
+  user: User | null;
   login: (email: string, password: string) => void;
+  signup: (email: string, password: string) => void;
   logout: () => void;
 }
 
-// Create the context with the specified types
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 interface AuthProviderProps {
-  children: ReactNode;  // Ensure that children are typed correctly
+  children: ReactNode;
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
+  // Effect to check localStorage for user and update state when the component mounts
   useEffect(() => {
-    // Listen to authentication state changes
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);  // Set the user object or null based on authentication state
-    });
-
-    return () => unsubscribe();
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
   }, []);
 
-  const signup = async (email: string, password: string) => {
-    try {
-      const userCredential = await saveUser({ email, password });
-      setUser(userCredential.user);  // Set user after successful signup
-    } catch (error) {
-      console.error("Signup error:", error);
-    }
+  // Login method - in a real app, you'd verify credentials with an API call
+  const login = (email: string, password: string) => {
+    // Basic authentication check for the example
+    const user = { email };
+    localStorage.setItem('user', JSON.stringify(user)); // Save to localStorage
+    setUser(user); // Update state with the user
   };
 
-  const login = async (email: string, password: string) => {
-    try {
-      const userCredential = await validateUser(email, password);
-      setUser(userCredential.user);  // Set user after successful login
-    } catch (error) {
-      console.error("Login error:", error);
-    }
+  // Signup method - similar to login, but would save the user in your database in a real app
+  const signup = (email: string, password: string) => {
+    // Here you might want to store the user data in the database
+    const user = { email };
+    localStorage.setItem('user', JSON.stringify(user)); // Save to localStorage
+    setUser(user); // Update state with the user
   };
 
-  const logout = async () => {
-    await signOut(auth);
-    setUser(null);  // Set user to null after logout
+  // Logout method - removes the user from localStorage and clears the state
+  const logout = () => {
+    localStorage.removeItem('user'); // Remove from localStorage
+    setUser(null); // Clear state
   };
 
   return (
-    <AuthContext.Provider value={{ user, signup, login, logout }}>
+    <AuthContext.Provider value={{ user, login, signup, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-// Custom hook to use the auth context in other components
+// Custom hook to access Auth context
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
 };
-

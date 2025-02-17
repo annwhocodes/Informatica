@@ -1,15 +1,35 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
+import Row from '../components/Row';
 
-const PlaceholderPage = () => {
+function StudentActivities() {
+  const activities = [
+    {
+      title: "Hackathon",
+      description: "24-hour coding competition",
+      image: "https://source.unsplash.com/800x400/?hackathon"
+    },
+    {
+      title: "Tech Club",
+      description: "Weekly technology meetups and projects",
+      image: "https://source.unsplash.com/800x400/?tech-club"
+    },
+    {
+      title: "Cultural Events",
+      description: "Department cultural celebrations",
+      image: "https://source.unsplash.com/800x400/?cultural-event"
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Coming Soon</h1>
-        <p className="text-lg text-gray-600 mb-6">This page is under construction. Stay tuned!</p>
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-red-600 border-opacity-50"></div>
+    <div className="page-container">
+      <Navbar />
+      <div className="content-wrapper">
+        <h1 className="page-title">Student Activities</h1>
+        <Row title="Recent Activities" items={activities} />
       </div>
     </div>
   );
-};
+}
 
-export default PlaceholderPage;
+export default StudentActivities;
