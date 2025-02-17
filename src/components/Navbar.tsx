@@ -28,6 +28,7 @@ export const Navbar = () => {
         <div className="flex items-center gap-6">
           {user && (
             <>
+              
               <Link to="/about" className="hover:text-red-600 flex items-center">
                 <img
                   src="https://i.imgur.com/xVQN76e.png"
@@ -35,6 +36,7 @@ export const Navbar = () => {
                   className="w-6 h-6"
                 />
               </Link>
+              
               <button onClick={handleSignOut} className="hover:text-red-600">
                 <LogOut className="w-6 h-6" />
               </button>

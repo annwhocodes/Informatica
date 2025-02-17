@@ -15,6 +15,7 @@ import ArtGallery from "./pages/ArtGallery";
 import StudentActivities from "./pages/StudentActivities";
 import PlacementStatistics from "./pages/PlacementStatistics";
 import AboutUs from "./pages/AboutUs";
+import MomentsOfISE from "./pages/MomentsOfISE";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user } = useAuth();
@@ -35,6 +36,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/moments"
+          element={
+            <ProtectedRoute>
+              <MomentsOfISE />
             </ProtectedRoute>
           }
         />
@@ -87,7 +96,7 @@ function App() {
           }
         />
         <Route
-          path="/workshops-and-trips"
+          path="/workshops"
           element={
             <ProtectedRoute>
               <WorkshopsAndTrips />
@@ -131,4 +140,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

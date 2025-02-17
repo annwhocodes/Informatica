@@ -3,20 +3,17 @@ import { Link } from 'react-router-dom';
 import { ChevronRight, Calendar, Award, BookOpen } from 'lucide-react';
 
 const features = [
-  { title: 'Vision and Mission', color: 'bg-blue-600' },
-  { title: 'Faculty Achievement', color: 'bg-red-600' },
-  { title: 'Faculty Publication', color: 'bg-green-600' },
-  { title: 'Student Induction', color: 'bg-purple-600' },
-  { title: 'Industrial Visit', color: 'bg-yellow-600' },
-  { title: 'Funded Projects', color: 'bg-pink-600' },
-  { title: 'Workshops and Trips', color: 'bg-indigo-600' },
-  { title: 'Art Gallery', color: 'bg-orange-600' },
-  { title: 'Student Activities', color: 'bg-teal-600' },
-  { title: 'Placement Statistics', color: 'bg-cyan-600' },
-].map(feature => ({
-  ...feature,
-  path: '/' + feature.title.toLowerCase().replace(/\s+/g, '-')
-}));
+  { title: 'Vision and Mission', path: '/vision-mission', color: 'bg-blue-600' },
+  { title: 'Faculty Achievement', path: '/faculty-achievement', color: 'bg-red-600' },
+  { title: 'Faculty Publication', path: '/faculty-publication', color: 'bg-green-600' },
+  { title: 'Student Induction', path: '/student-induction', color: 'bg-purple-600' },
+  { title: 'Industrial Visit', path: '/industrial-visit', color: 'bg-yellow-600' },
+  { title: 'Funded Projects', path: '/funded-projects', color: 'bg-pink-600' },
+  { title: 'Workshops and Trips', path: '/workshops', color: 'bg-indigo-600' },
+  { title: 'Art Gallery', path: '/art-gallery', color: 'bg-orange-600' },
+  { title: 'Student Activities', path: '/student-activities', color: 'bg-teal-600' },
+  { title: 'Placement Statistics', path: '/placement-stats', color: 'bg-cyan-600' },
+];
 
 const updates = [
   {
@@ -55,10 +52,13 @@ export const Home = () => {
         <div className="absolute inset-0 bg-black bg-opacity-60">
           <div className="container mx-auto h-full flex flex-col justify-center px-4">
             <h1 className="text-5xl font-bold mb-4">Welcome to Informatica!</h1>
-            <p className="text-xl mb-6">Discover the latest in Information science and technology.</p>
-            <button className="bg-red-600 text-white px-8 py-2 rounded hover:bg-red-700 w-fit">
-              Read More
-            </button>
+            <p className="text-xl mb-6">Discover the latest in the ISE department, BIT Bangalore.</p>
+            <Link 
+              to="/moments" 
+              className="bg-red-600 text-white px-8 py-2 rounded hover:bg-red-700 w-fit"
+            >
+              Moments of ISE
+            </Link>
           </div>
         </div>
       </div>

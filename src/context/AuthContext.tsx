@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface User {
   email: string;
@@ -18,36 +18,28 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-
-  // Effect to check localStorage for user and update state when the component mounts
-  useEffect(() => {
+  const [user, setUser] = useState<User | null>(() => {
     const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-  }, []);
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
-  // Login method - in a real app, you'd verify credentials with an API call
   const login = (email: string, password: string) => {
-    // Basic authentication check for the example
+    // Simple authentication - in a real app, you'd want to validate credentials
     const user = { email };
-    localStorage.setItem('user', JSON.stringify(user)); // Save to localStorage
-    setUser(user); // Update state with the user
+    localStorage.setItem('user', JSON.stringify(user));
+    setUser(user);
   };
 
-  // Signup method - similar to login, but would save the user in your database in a real app
   const signup = (email: string, password: string) => {
-    // Here you might want to store the user data in the database
+    // Simple signup - in a real app, you'd want to store user data securely
     const user = { email };
-    localStorage.setItem('user', JSON.stringify(user)); // Save to localStorage
-    setUser(user); // Update state with the user
+    localStorage.setItem('user', JSON.stringify(user));
+    setUser(user);
   };
 
-  // Logout method - removes the user from localStorage and clears the state
   const logout = () => {
-    localStorage.removeItem('user'); // Remove from localStorage
-    setUser(null); // Clear state
+    localStorage.removeItem('user');
+    setUser(null);
   };
 
   return (
@@ -57,7 +49,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   );
 };
 
-// Custom hook to access Auth context
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (!context) {
