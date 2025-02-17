@@ -87,7 +87,7 @@ function App() {
           }
         />
         <Route
-          path="/workshops"
+          path="/workshops-and-trips"
           element={
             <ProtectedRoute>
               <WorkshopsAndTrips />
