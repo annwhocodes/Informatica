@@ -19,8 +19,8 @@ npm run dev
 
 ## **Login Credentials**
 
-- **email:** `use any email account of your choice`  
-- **password:** `use any password with miniumum 6 characters`  
+- **email:** `anything`  
+- **password:** `ise123`  
 
 ---
 
